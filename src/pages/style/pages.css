@@ -1,0 +1,24 @@
+/* Home Page Css */
+.cat {
+  left: 1.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cr:hover{
+  cursor:pointer;
+}
+
+.banner-imgs{
+  width: 612px;
+  height: 408px;
+}
+
+.banner-txt{
+  color: white;
+  font-weight: bold;
+}
+
+.banner-txt2{
+  color: #8490ff !important;
+  font-weight: bold;
+}

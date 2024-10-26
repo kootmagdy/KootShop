@@ -1,0 +1,109 @@
+.color-primary {
+  color: #8490ff !important;
+}
+
+.background-primary {
+  background-color: #8490ff !important;
+}
+
+/* my footer */
+.bg-footer {
+  background-color: rgba(4, 9, 30, 1);
+}
+
+.text-red {
+  color: red;
+}
+.text-black-50-dark {
+  color: #777777;
+}
+.lh-lg {
+  line-height: 1.65 !important;
+}
+.text-sm {
+  font-size: 0.895rem;
+}
+.transition-colors {
+  transition: color 150ms, background-color 150ms;
+}
+.fab:hover {
+  color: #8490ff !important;
+}
+/* Nav Bar */
+.nav-link {
+  color: rgba(0, 0, 0, 0.9) !important;
+  font-size: 0.8rem !important;
+}
+.nav-link.active {
+  color: #8490ff !important;
+}
+.nav-link:hover {
+  color: #8490ff !important;
+}
+
+i.mycart:hover {
+  color: #8490ff !important;
+}
+
+.cart-notify {
+  padding: 2px;
+  background-color: red;
+  width: fit-content;
+  left: 1.35rem;
+  top: -18%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* .fa-shop:hover{
+  color: #8400f3 !important;
+} */
+.my-span {
+  box-shadow: 0 4px rgb(0 0 0 / 15%);
+}
+.my-span:hover {
+  color: rgb(132 0 243 / 50%) !important;
+  box-shadow: 0 4px rgb(132 0 243 / 30%);
+}
+.navbar {
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+}
+/* my card  style  */
+.mcard {
+  border: unset !important;
+}
+.cardimg {
+  height: 300px;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+/* style for model  */
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.75 !important;
+}
+
+/* style for offcanvece */
+.offcanve {
+  background-color: #cfdd4c !important;
+}
+
+.sh {
+  box-shadow: 0 4px rgba(2, 10, 2, 0.2);
+}
+
+.oc-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.oc-row {
+  background-color: rgba(11, 12, 11, 0.582);
+}

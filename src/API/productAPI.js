@@ -2,32 +2,43 @@ import axios from "axios";
 
 let baseURL = "http://localhost:3001/api/v1/products";
 
-const getProducts = async (token) => {
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-  return await axios.get(`${baseURL}`, { headers });
+const getProducts = async () => {
+  return await axios({
+    method: "GET",
+    url: `${baseURL}`,
+    withCredentials: true,
+  });
 };
 
-const addProduct = async (token, title, price, imgSrc) => {
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
+const addProduct = async (title, price, imgSrc) => {
   const payload = {
     title,
     price,
     imgSrc,
   };
-  return await axios.post(baseURL, payload, { headers });
+  return await axios({
+    method: "POST",
+    url: `${baseURL}`,
+    data: payload,
+    withCredentials: true,
+  });
 };
 
-let deleteProduct = async (token, _id) => {
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-  return await axios.delete(`${baseURL}/${_id}`,{headers});
+let deleteProduct = async (_id) => {
+  return await axios({
+    method: "DELETE",
+    url: `${baseURL}/${_id}`,
+    withCredentials: true,
+  });
 };
-let updateProduct = (pId, product) => axios.put(`${baseURL}/${pId}`, product);
+let updateProduct = async (pId, product) => {
+  return await axios({
+    method: "PUT",
+    url: `${baseURL}/${pId}`,
+    data: product,
+    withCredentials: true,
+  });
+}
 
 export let productAPI = {
   getProducts,

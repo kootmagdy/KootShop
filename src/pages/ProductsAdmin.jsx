@@ -6,10 +6,9 @@ import { MainContext } from "../Context/MainContext";
 
 export default function ProductsAdmin() {
   let [products, setProducts] = useState([]);
-  let {token} = useContext(MainContext);
   let getallproducts = () => {
     productAPI
-      .getProducts(token)
+      .getProducts()
       .then((r) => {
         setProducts(r.data.data.products);
       })

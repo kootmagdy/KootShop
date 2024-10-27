@@ -15,7 +15,7 @@ import shop from "../assets/imgs/shop2.png";
 import { userAPI } from "../API/userAPI";
 
 export default function MyNav() {
-  let { count, productCanv, user ,setUser } = useContext(MainContext);
+  let { count, productCanv, user, setUser } = useContext(MainContext);
   const [visible, setVisible] = useState(false);
   const [totalMoney, setTotalMoney] = useState(0);
   const navigateTo = useNavigate();
@@ -81,6 +81,12 @@ export default function MyNav() {
                 <Dropdown.Menu>
                   <Dropdown.Item >{user.user.name}</Dropdown.Item>
                   <Dropdown.Item>{user.user.email}</Dropdown.Item>
+                  {user.user.role === "admin" && (
+                    <>
+                      <Dropdown.Item as={NavLink} to="/product">Add Product</Dropdown.Item>
+                      <Dropdown.Item as={NavLink} to="/editproduct">Edit Products</Dropdown.Item>
+                    </>
+                  )}
                   <Dropdown.Item as="button" className="p-2 text-danger" onClick={logout}>
                     <i className="bi bi-box-arrow-right me-2"></i>Logout
                   </Dropdown.Item>

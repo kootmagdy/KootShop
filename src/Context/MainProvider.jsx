@@ -46,8 +46,11 @@ export default function MainProvider(props) {
   //login token
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [tempProduct, setTempProduct] = useState(null);
+  const [pros, setPros] = useState([]);
 
   let myval = {
+    pros, setPros,
     count,
     increase,
     decrease,
@@ -55,6 +58,8 @@ export default function MainProvider(props) {
     pushProduct,
     deleteProduct,
     token,
+    tempProduct,
+    setTempProduct,
     setToken,
     user,
     setUser

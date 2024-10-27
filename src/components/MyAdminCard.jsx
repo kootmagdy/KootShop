@@ -15,15 +15,16 @@ import { productAPI } from "../API/productAPI";
 
 export default function MyAdminCard(props) {
   let { productInfo } = props;
-  const [products, setProducts] = useState([]); 
-  let { token } = useContext(MainContext);
+  let {setPros} = useContext(MainContext);
+  const [products, setProducts] = useState([]);
   const cardRef = useRef(null);
+  
 
   
   const deleteproduct = async () => {
-    console.log("this will delete this ", productInfo._id);
     try {
-      const result = await productAPI.deleteProduct(token, productInfo._id);
+      const result = await productAPI.deleteProduct(productInfo._id);
+      setPros([]);
       cardRef.current.remove();
       setProducts((prevProducts) =>
       prevProducts.filter((product) => product._id !== productInfo._id)

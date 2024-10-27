@@ -1,16 +1,16 @@
 import React, { useContext, useRef, useState } from "react";
-import { MainContext } from "../Context/MainContext";
 import { productAPI } from "../API/productAPI";
 import { useNavigate } from "react-router-dom";
+import { MainContext } from "../Context/MainContext";
 
 export default function Addproduct() {
-  let { token } = useContext(MainContext);
   const titleRef = useRef(null);
   const priceRef = useRef(null);
   const imgRef = useRef(null);
   const navigateTo = useNavigate();
   const [error, setError] = useState(null); // State variable for error message
   const [confirm, setConfirm] = useState(null);
+  const { setPros } = useContext(MainContext);
 
   const btnSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +21,12 @@ export default function Addproduct() {
     if (title && price && image) {
       try {
         const result = await productAPI.addProduct(
-          token,
           title,
           price,
           image,
         );
-        console.log(result);
         setConfirm(result.data.data)
+        setPros([]);
         navigateTo("/products");
       } catch (err) {
         console.log(err.response.data.message);

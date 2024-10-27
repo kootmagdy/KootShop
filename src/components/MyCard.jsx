@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./style/style.css";
@@ -16,28 +16,21 @@ export default function MyCard(props) {
   let [Count, setCount] = useState(0);
   //for model
   const [visible, setVisible] = useState(false);
-  const [visibleSm, setVisibleSm] = useState(false);
-
   let { productInfo } = props;
-
-  let { increase, pushProduct } = useContext(MainContext);
+  let { increase, pushProduct , setTempProduct } = useContext(MainContext);
 
   let addToCard = () => {
     increase();
-    setVisibleSm(!visibleSm);
-
+    //setVisibleSm(true);
+    setTempProduct(productInfo);
     pushProduct(
       productInfo?._id,
       productInfo?.title,
       productInfo?.price,
       productInfo?.imgSrc
     );
-
-    setTimeout(() => {
-      setVisibleSm(false);
-      setVisible(false);
-    }, 1100);
   };
+
   return (
     <div className="col-sm-6 col-md-3">
       <Card className="mcard container">
@@ -117,24 +110,7 @@ export default function MyCard(props) {
           </div>
         </CModalBody>
       </CModal>
-
-      {/* Our Model for Item Bought */}
-      <CModal size="lg" visible={visibleSm} onClose={() => setVisibleSm(false)}>
-        <CModalBody>
-          <div className="text-center text-success fw-bold">
-            <span className="me-2">
-              <i className="fa-solid fa-circle-check fs-3"></i>
-            </span>
-            <span className="fs-3 fw-bolder">
-              The{" "}
-              <span className="text-capitalize color-primary">
-                {productInfo?.title}
-              </span>{" "}
-              Successfully Added To Cart
-            </span>
-          </div>
-        </CModalBody>
-      </CModal>
     </div>
+    
   );
 }

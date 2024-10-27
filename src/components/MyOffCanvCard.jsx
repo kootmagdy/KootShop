@@ -18,7 +18,7 @@ export default function MyOffCanvCard(props) {
         </div>
         <div className="col-8  text-white fs-3 text-center rounded fw-bold">
           <p className="text-capitalize">{productInfo?.title}</p>
-          <h2 className="text-warning">{productInfo?.price}</h2>
+          <h2 className="text-warning">{productInfo?.price}$</h2>
           <button onClick={Del} className="btn btn-danger">
             Delete From Cart
           </button>

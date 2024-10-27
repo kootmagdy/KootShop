@@ -22,8 +22,10 @@ function App() {
 
   // Custom authentication check
   const isAuthenticated = () => {
-    // Implement your own logic to check if the user is authenticated (e.g., check for a token)
-    return token;
+    if (user.user.email){
+      return true;
+    }
+    return false;
   };
 
   // Protected route for /products

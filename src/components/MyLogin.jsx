@@ -63,6 +63,15 @@ export default function MyLogin() {
             </button>
           </div>
         </form>
+        <p color="gray" className="mt-4 font-normal">
+             Forgot your password?{" "}
+              <a
+                onClick={() => navigateTo("/resetpassword")}
+                className="font-medium cursor-pointer text-blue-500 transition-colors hover:text-blue-gray-900"
+              >
+                Reset it
+              </a>
+            </p>
       </div>
     </div>
   );

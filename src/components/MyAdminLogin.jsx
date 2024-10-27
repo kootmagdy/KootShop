@@ -4,14 +4,14 @@ import { MainContext } from "../Context/MainContext";
 import { useNavigate } from "react-router-dom";
 
 export default function MyAdminLogin() {
-  let { setToken , setUser } = useContext(MainContext);
+  let { setToken, setUser } = useContext(MainContext);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const navigateTo = useNavigate();
   const params = new URLSearchParams(window.location.search)
   let to = params.get('to')
   const [error, setError] = useState(null); // State variable for error message
- 
+
   const btnSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;

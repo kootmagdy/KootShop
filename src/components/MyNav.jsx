@@ -27,12 +27,7 @@ export default function MyNav() {
   }, [productCanv]);
 
   useEffect(() => {
-    console.log(user);
-    if (user) {
-      console.log(user.user.name);
-      console.log(user.user.email);
-      console.log(user.user._id);
-    }
+    console.log("mynav : ",user);
   }, [user]);
 
   return (

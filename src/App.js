@@ -12,6 +12,8 @@ import Products from "./pages/Products";
 import AboutUs from "./pages/AboutUs";
 import MyAdminLogin from "./components/MyAdminLogin";
 import Addproduct from "./components/Addproduct";
+import ResetPassword from "./components/password Reset/ResetPassword";
+import ResetPwToken from "./components/password Reset/ResetPwToken";
 import ProductsAdmin from "./pages/ProductsAdmin";
 import { MainContext } from "./Context/MainContext";
 
@@ -52,6 +54,8 @@ function App() {
       <Routes>
         <Route path="home" element={<Home />} />
         <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="resetpassword" element={<ResetPassword />} />
+        <Route path="resetpassword/:id" element={<ResetPwToken />} />
         <Route path="login" element={<Login />}>
           <Route path="" element={<MyLogin />} />
           <Route path="new" element={<MyReg />} />
@@ -78,10 +82,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
-
-//https://getbootstrap.com/docs/5.2/examples/sticky-footer/
-// html,body,root [in public/index.html] class [h-100]
-// div of app [the container] take [d-flex flex-column h-100]
-// footer take [footer mt-auto]

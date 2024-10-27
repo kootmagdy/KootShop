@@ -7,7 +7,12 @@ const login = async (email, password) => {
     email,
     password,
   };
-  return await axios.post(`${baseURL}/login`, payload);
+  return await axios({
+    method: "Post",
+    url: `${baseURL}/login`,
+    withCredentials: true,
+    data : payload
+  });
 };
 
 const signUp = async (name,email, password, passwordConfirm) => {
@@ -17,8 +22,12 @@ const signUp = async (name,email, password, passwordConfirm) => {
     password,
     passwordConfirm
   };
-  
-  return await axios.post(`${baseURL}/signup`, payload);
+  return await axios({
+    method: "Post",
+    url: `${baseURL}/signup`,
+    withCredentials: true,
+    data : payload
+  });
 };
 
 const LogOut = async () => {
@@ -45,6 +54,7 @@ const ForgetPassword = async (email) => {
       data: {
         email,
       },
+      withCredentials: true,
     });
 
     if (res.data.status === "success") {

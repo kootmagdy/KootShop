@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MainContext } from "../Context/MainContext";
 import {
   COffcanvas,
@@ -12,12 +12,13 @@ import {
 import Dropdown from 'react-bootstrap/Dropdown';
 import MyOffCanvCard from "./MyOffCanvCard";
 import shop from "../assets/imgs/shop2.png";
+import { userAPI } from "../API/userAPI";
 
 export default function MyNav() {
-  let { count, productCanv, user } = useContext(MainContext);
+  let { count, productCanv, user ,setUser } = useContext(MainContext);
   const [visible, setVisible] = useState(false);
   const [totalMoney, setTotalMoney] = useState(0);
-
+  const navigateTo = useNavigate();
   useEffect(() => {
     let sum = 0;
     productCanv.map((product) => {
@@ -27,8 +28,16 @@ export default function MyNav() {
   }, [productCanv]);
 
   useEffect(() => {
-    console.log("mynav : ",user);
+    console.log("mynav : ", user);
   }, [user]);
+
+  const logout = async () => {
+    let res = await userAPI.LogOut();
+    if (res?.status == "success") {
+      setUser(null);
+      navigateTo("/home");
+    }
+  }
 
   return (
     <Navbar className="bg-light sticky-top navbar" expand="lg">
@@ -65,15 +74,18 @@ export default function MyNav() {
               </NavLink>
             ) : (
               <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-button-drop-down">
-                Your Account
-              </Dropdown.Toggle>
-        
-              <Dropdown.Menu>
-                <Dropdown.Item >{user.user.name}</Dropdown.Item>
-                <Dropdown.Item>{user.user.email}</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-button-drop-down">
+                  Your Account
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item >{user.user.name}</Dropdown.Item>
+                  <Dropdown.Item>{user.user.email}</Dropdown.Item>
+                  <Dropdown.Item as="button" className="p-2 text-danger" onClick={logout}>
+                    <i className="bi bi-box-arrow-right me-2"></i>Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             )}
             <div className="position-relative">
               <i

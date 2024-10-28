@@ -22,7 +22,7 @@ function App() {
 
   // Custom authentication check
   const isAuthenticated = () => {
-    if (user.user.email){
+    if (user?.user?.email){
       return true;
     }
     return false;
